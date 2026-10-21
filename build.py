@@ -62,13 +62,13 @@ SUB_MENUS = {
 
 # Illustraties onderaan de pagina: naam -> (bestand, breedte, hoogte, uitlijning)
 ILLUSTRATIONS = {
-    "wie": ("wie-zijn-wij.jpg", 663, 363, "left"),
-    "anita": ("anita-ter-hofte.jpg", 663, 363, "left"),
-    "mariet": ("mariet-bosschers.jpg", 664, 359, "left"),
-    "hannebeth": ("hannebeth-haffmans.jpg", 669, 362, "left"),
-    "wat": ("wat-doen-wij.jpg", 891, 270, "full"),
-    "waarom": ("waarom-doen-wij-dat.jpg", 302, 233, "right"),
-    "contact": ("contact_bg.jpg", 281, 219, "right"),
+    "wie": ("wie-zijn-wij.webp", 663, 363, "left"),
+    "anita": ("anita-ter-hofte.webp", 663, 363, "left"),
+    "mariet": ("mariet-bosschers.webp", 664, 359, "left"),
+    "hannebeth": ("hannebeth-haffmans.webp", 669, 362, "left"),
+    "wat": ("wat-doen-wij.webp", 891, 270, "full"),
+    "waarom": ("waarom-doen-wij-dat.webp", 302, 233, "right"),
+    "contact": ("contact_bg.webp", 281, 219, "right"),
 }
 
 # Pagina's: pad, sectie, titel, tekst in de rode balk, illustratie, omschrijving (meta description)
@@ -249,14 +249,14 @@ def render_page(page):
 def render_home():
     root = ""
     tiles = "\n    ".join(
-        f'<img src="assets/img/home_bg{i}.jpg" width="445" height="260" alt="">' for i in range(1, 5))
+        f'<img src="assets/img/home_bg{i}.webp" width="445" height="260" alt="">' for i in range(1, 5))
     return f"""{head(HOME, root)}
 <body class="home">
 {header(HOME, root)}
 <main id="inhoud" class="panel">
   <div class="mosaic">
     {tiles}
-    <img class="mosaic-logo" src="assets/img/home_logo.png" width="191" height="127" alt="Bureau Sproet">
+    <img class="mosaic-logo" src="assets/img/home_logo.webp" width="191" height="127" alt="Bureau Sproet">
   </div>
 </main>
 {footer(HOME, root)}
