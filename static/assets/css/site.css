@@ -1,0 +1,317 @@
+/* Bureau Sproet - responsive herbouw van het oorspronkelijke ontwerp (HollandseWerken / Bizzib) */
+
+:root {
+  --red: #E2001A;
+  --blue: #3FC8F4;
+  --blue-dark: #0077A8;   /* donkerder blauw voor kleine tekst/links: voldoende contrast op wit */
+  --ink: #333;
+  --muted: #6b6b6b;
+  --paper: #fff;
+  --wrap: 890px;
+  --gutter: 16px;
+  --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--red);
+  color: var(--ink);
+  font-family: var(--font);
+  line-height: 1.55;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #fff;
+  color: var(--red);
+  padding: .5rem 1rem;
+  z-index: 10;
+}
+.skip:focus { left: var(--gutter); }
+
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+/* ---------- Kop met logo en ronde menuknoppen ---------- */
+
+.site-header {
+  width: 100%;
+  max-width: var(--wrap);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px var(--gutter) 12px;
+  min-height: 90px;
+}
+
+.home .site-header { justify-content: flex-end; }
+
+.brand { flex: none; }
+.brand img { width: 103px; }
+
+.mainnav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.mainnav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .25), 0 1px 3px rgba(0, 0, 0, .25);
+  background-image: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .18), transparent 60%);
+  color: #fff;
+  font: bold 11px/1.1 Arial, Helvetica, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .15s;
+}
+
+.mainnav a:hover,
+.mainnav a:focus-visible,
+.mainnav a[aria-current],
+.mainnav a.active {
+  background-color: var(--blue);
+}
+
+/* ---------- Wit middenvlak ---------- */
+
+.panel {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: var(--wrap);
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  padding: 2rem var(--gutter) 1.5rem;
+}
+
+.content { max-width: 40rem; }
+
+/* Typografie in de content */
+.content h1 {
+  color: var(--blue);
+  font-size: 1.6rem;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.content h3 {
+  font-size: 1rem;
+  margin: 1.5rem 0 .4rem;
+}
+
+.content p { margin: 0 0 1rem; }
+
+.content ul {
+  margin: 0 0 1.25rem;
+  padding-left: 1.25rem;
+}
+.content li { margin: .15rem 0; }
+.content li::marker { color: var(--red); }
+
+.content a { color: var(--ink); text-decoration-color: var(--red); text-underline-offset: 2px; }
+.content a:hover { text-decoration: none; }
+
+.content address { font-style: normal; }
+
+.content .contacts {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.content .credits { color: var(--muted); font-size: .85rem; }
+
+.content .slogan {
+  color: var(--blue);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+
+.content .columns { columns: 2 12rem; column-gap: 2rem; }
+.content .columns li { break-inside: avoid; }
+
+/* Cv-regels op de persoonspagina's */
+.cv {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: .35rem 1rem;
+  margin: 0 0 1.25rem;
+}
+.cv dt { font-weight: 700; white-space: nowrap; }
+.cv dd { margin: 0; }
+
+/* ---------- Submenu (zijbalk) ---------- */
+
+.subnav {
+  border-top: 1px solid #eee;
+  padding-top: 1.25rem;
+  font-size: .95rem;
+}
+
+.subnav h2 {
+  margin: 0 0 .5rem;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+
+.subnav ul { list-style: none; margin: 0; padding: 0; }
+
+.subnav a {
+  display: block;
+  padding: .45rem 0;
+  color: var(--red);
+  text-decoration: none;
+}
+.subnav a::before { content: "> "; }
+.subnav a:hover { text-decoration: underline; }
+.subnav a[aria-current] { font-weight: 700; }
+
+/* ---------- Illustratie onderaan ---------- */
+
+.illu {
+  margin-top: auto;
+  display: flex;
+  line-height: 0;
+}
+.illu-left { justify-content: flex-start; }
+.illu-right { justify-content: flex-end; }
+.illu-full img { width: 100%; }
+.illu-left img { width: min(663px, 92%); }
+.illu-right img { width: min(300px, 70%); }
+
+/* ---------- Homepage: fotomozaïek met logo ---------- */
+
+.home .panel { border-radius: 6px 6px 0 0; }
+
+.mosaic {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  aspect-ratio: 890 / 520;
+}
+.mosaic img { width: 100%; height: 100%; object-fit: cover; }
+.mosaic .mosaic-logo {
+  position: absolute;
+  left: .6%;
+  bottom: .4%;
+  width: 21.5%;
+  height: auto;
+}
+
+/* ---------- Rode balk onderaan ---------- */
+
+.site-footer {
+  width: 100%;
+  max-width: var(--wrap);
+  padding: 8px var(--gutter) 14px;
+  color: #fff;
+}
+
+.tagline {
+  margin: 0;
+  padding-left: 20px;
+  background: url("../img/bottom_blueball.gif") no-repeat 0 .45em;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+.colofon {
+  margin: .35rem 0 0;
+  padding-left: 20px;
+  font-size: 12px;
+  opacity: .85;
+}
+.colofon a:hover { text-decoration: none; }
+
+/* ---------- Tablet en desktop ---------- */
+
+@media (min-width: 720px) {
+  .cols { padding: 2rem 2.5rem 1.5rem; }
+
+  /* Zoals het origineel: submenu links, tekst rechts */
+  .cols.has-sub {
+    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+    grid-template-areas: "sub content";
+    column-gap: 3.5rem;
+  }
+  .cols.has-sub .content { grid-area: content; }
+  .cols.has-sub .subnav {
+    grid-area: sub;
+    border-top: 0;
+    padding-top: 0;
+    font-size: .85rem;
+  }
+  .cols.has-sub .subnav h2 { display: none; }
+  .subnav a { padding: .3rem 0; }
+
+  .content { font-size: .95rem; }
+  .cols:not(.has-sub) .content { margin-left: auto; margin-right: auto; width: 100%; }
+}
+
+@media (min-width: 890px) {
+  .site-header { padding-left: 0; padding-right: 20px; }
+  .site-footer { padding-left: 0; padding-right: 0; }
+  .panel { border-radius: 6px; }
+}
+
+/* ---------- Mobiel: menu past op één regel ---------- */
+
+@media (max-width: 560px) {
+  .site-header { flex-direction: column; align-items: flex-start; min-height: 0; }
+  .home .site-header { align-items: stretch; }
+  .brand img { width: 84px; }
+  .mainnav { width: 100%; }
+  .mainnav ul { justify-content: space-between; gap: 4px; }
+  .mainnav a {
+    width: min(54px, calc((100vw - 2 * var(--gutter) - 20px) / 6));
+    height: min(54px, calc((100vw - 2 * var(--gutter) - 20px) / 6));
+    font-size: 10.5px;
+  }
+  .content h1 { font-size: 1.45rem; }
+  .panel, .home .panel { border-radius: 0; }
+}
+
+@media print {
+  body { background: #fff; }
+  .mainnav, .subnav, .illu, .skip { display: none; }
+  .site-footer { color: #000; }
+}
