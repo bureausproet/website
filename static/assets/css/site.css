@@ -79,9 +79,8 @@ a { color: inherit; }
   width: 58px;
   height: 58px;
   border-radius: 50%;
+  border: 2px solid #fff;   /* witte rand zoals in de originele ButtonRed/ButtonBlue.png */
   background: var(--red);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .25), 0 1px 3px rgba(0, 0, 0, .25);
-  background-image: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .18), transparent 60%);
   color: #fff;
   font: bold 11px/1.1 Arial, Helvetica, sans-serif;
   text-align: center;
